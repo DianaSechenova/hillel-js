@@ -1,11 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>lesson3</title>
 </head>
+
 <body>
-  
+  <script>
+    //hm1
+    let typeObject = {
+      num: 42,
+      str: 'string',
+      bool: true,
+      nullValue: null,
+      undefinedValue: undefined,
+      obj: {
+        key: 'value'
+      },
+      array: [1, 2, 3],
+      func: function () {
+        return;
+      },
+      symbolValue: Symbol('symbol'),
+      bigIntValue: BigInt(123456789)
+    };
+    for (let key in typeObject) {
+      let value = typeObject[key];
+      if (value === null) {
+        console.log(`type ${key}: null`);
+      } else {
+        console.log(`type ${key}: ${typeof value}`);
+      }
+    }
+
+    //hm2
+    let name = prompt('your name');
+    let yearBirth = prompt('the year of your birth:');
+    let currentDate = new Date();
+    let currentYear = currentDate.getFullYear();
+
+    console.log(`hi ${name}, you are ${currentYear - yearBirth} years old.`);
+
+    //hm3
+      let number = 10369;
+      let numberString = number.toString();
+      let result = '';
+
+      for (let i = 0; i < numberString.length; i++) {
+        result += numberString[i] + ' '; 
+      }
+
+      console.log(result.trim());
+  </script>
 </body>
 </html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>lesson4</title>
+</head>
+
+<body>
+  <script>
+    // ДЗ 4.1. Робота з prompt
+    let userName = prompt('Your name:');
+    if (userName !== null && userName !== '') {
+      alert("Hello, " + userName + "! How are you?");
+    } else {
+      alert("Enter your name!");
+    }
+
+    //  ДЗ 4.2. Перевірка числа
+    let number = prompt('Enter number:');
+    let hasDuplicates = false;
+    let allDigits = true;
+
+    for (let i = 0; i < number.length; i++) {
+      for (let j = i + 1; j < number.length; j++) {
+        if (number[i] === number[j]) {
+          hasDuplicates = true;
+        }
+        if (number[i] !== number[j]) {
+          allDigits = false;
+        }
+      }
+    }
+
+    if (allDigits) {
+      console.log('Всі цифри однакові');
+    } else {
+      if (hasDuplicates) {
+        console.log('Cеред цифр є однакові');
+      } else {
+        console.log('Cеред цифр немає однакових');
+      }
+    }
+
+
+    // 4.3. Портрет користувача
+    let yearBirth = prompt('рік народження:');
+    let userCity = prompt('в якому місті ви живете?')
+    let userSport = prompt('улюблений вид спорту?');
+    let currentDate = new Date();
+    let currentYear = currentDate.getFullYear();
+    const citys = ['Київ', 'Вашингтон', 'Лондон']
+    const sportType = ["футбол", "теніс", "баскетбол"]
+
+    if (yearBirth) {
+      alert(`Ваш вік: ${currentYear - yearBirth}`);
+    } else {
+      alert(`Шкода, що Ви не захотіли ввести свій рік народження`);
+    }
+
+    if (userCity) {
+      if (userCity === citys[0]) {
+        alert('Ти живеш у столиці України');
+      } else if (userCity === citys[1]) {
+        alert('Ти живеш у столиці USA');
+      } else if (userCity === citys[2]) {
+        alert('Ти живеш у столиці Англiї');
+      } else {
+        `ти живеш у містi ${userCity}`
+      }
+    } else {
+      alert(`Шкода, що Ви не захотіли ввести містo проживання`);
+    }
+
+    if (userSport) {
+      if (sportType[0] === userSport) {
+        alert(`Круто! Хочеш стати Ліонель Мессі?`);
+      } else if (sportType[1] === userSport) {
+        alert(`Круто! Хочеш стати Cерена Уiльямс?`);
+      } else if (sportType[2] === userSport) {
+        alert(`Круто! Хочеш стати Леброн Джеймс?`);
+      }
+    } else {
+      alert(`Шкода, що Ви не захотіли ввести свій улюблений вид спорту`);
+    }
+
+
+    // ДЗ 4.4. Робота з switch…case
+    let numOrStr = prompt('input number or string');
+
+    switch (true) {
+      case numOrStr === null:
+        console.log('ви скасували')
+        break;
+
+      case numOrStr.trim() === '':
+        console.log('Empty String');
+        break;
+
+      case isNaN(+numOrStr):
+        console.log(' number is Ba_NaN')
+        break;
+
+      default:
+        console.log('OK!')
+        break;
+    }
+  </script>
+</body>
+
+</html>

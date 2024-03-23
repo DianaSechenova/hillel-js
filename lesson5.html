@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>lesson 5</title>
+</head>
+
+<body>
+  <script>
+    // ДЗ 17. Вивід чисел до консолі
+    for (let i = 20; i < 30; i += .5) {
+      console.log(i);
+    }
+
+    // ДЗ 18. Розрахунок валюти
+    const currentCost = 26;
+
+    for (let dollar = 10; dollar <= 100; dollar += 10) {
+      const costInUAH = dollar * currentCost;
+      console.log(`${dollar} доларів = ${costInUAH} гривень`);
+    }
+
+    // ДЗ 19. Пошук потрібних чисел
+    const N = parseInt(prompt('Enter number:'));
+
+    for (let i = 1; i <= 100; i++) {
+      if ((i * i) <= N) {
+        console.log(i);
+      } else {
+        break;
+      }
+    }
+
+    // ДЗ 20. Просте число чи ні
+    const num = prompt('Enter number:');
+
+    if (num % 2 != 1 && num % 2 != 0) {
+      console.log(`${num} не є цілим числом.`);
+    } else {
+      console.log(`${num} є цілим числом.`);
+    }
+  </script>
+</body>
+
+</html>

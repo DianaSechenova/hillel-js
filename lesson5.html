@@ -35,11 +35,19 @@
 
     // ДЗ 20. Просте число чи ні
     const num = prompt('Enter number:');
+    let isPrime = true;
 
-    if (num % 2 != 1 && num % 2 != 0) {
-      console.log(`${num} не є цілим числом.`);
+    for (let i = 2; i <= Math.sqrt(num); i++) {
+      if (num % i === 0) {
+        isPrime = false;
+        break;
+      }
+    }
+
+    if (isPrime && num > 1) {
+      console.log(`${num} - просте число`);
     } else {
-      console.log(`${num} є цілим числом.`);
+      console.log(`${num} - не просте число`);
     }
   </script>
 </body>

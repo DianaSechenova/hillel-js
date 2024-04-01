@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>lesson 7</title>
+</head>
+
+<body>
+  <script>
+
+    // ДЗ 13. Замикання
+    function calcSum() {
+      let total = 0;
+
+      return function (num) {
+        total += num;
+        return total;
+      };
+    }
+
+    const sum = calcSum();
+
+    console.log(sum(4));
+    console.log(sum(6));
+    console.log(sum(10));
+    console.log(sum(7));
+
+    //ДЗ 14. Добуток через карування
+    function calc(x) {
+      return function (y) {
+        return x * y;
+      };
+    }
+
+    console.log(calc(5)(2));
+
+    // ДЗ 15. Функція з циклом
+    function mapNum() {
+      let num;
+      let i = 0;
+
+      while (i < 10) {
+        num = prompt("Ввести число більше 100:");
+
+        if (num === null || num === "" || isNaN(num)) {
+          console.log("Введіть число більше 100 ще раз.");
+        } else if (parseInt(num) <= 100) {
+          console.log("Введіть число більше 100.");
+        } else {
+          console.log(`Останне введення: ${num}`);
+          return;
+        }
+
+        i++;
+      }
+    }
+
+    mapNum();
+  </script>
+
+</body>
+
+</html>

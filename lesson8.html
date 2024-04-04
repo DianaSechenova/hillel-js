@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>lesson 8</title>
+</head>
+
+<body>
+  <script>
+    //ДЗ 16. Сходи
+    let ladder = {
+      step: 0,
+      up: function () { // підніматиме вас на одну сходинку
+        this.step++;
+        return this;
+      },
+      down: function () { // опускатиме вас на одну сходинку
+        this.step--;
+        return this;
+      },
+      showStep: function () { // показує поточну сходинку
+        console.log(this.step)
+      }
+    };
+    ladder.up().up().up().down().down().showStep();    
+  </script>
+</body>
+
+</html>

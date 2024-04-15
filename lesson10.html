@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lesson 10</title>
+</head>
+
+<body>
+  <script>
+    // ДЗ 36. Отримання парних чисел з масиву
+
+    const arry = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+    function getArryOfNum(arry) {
+      const newArry = []
+
+      for (let item of arry) {
+        if (item % 2 == 0) {
+          newArry.push(item)
+        }
+      }
+      console.log(newArry);
+    }
+
+    getArryOfNum(arry)
+
+
+    // ДЗ 35. Книга контактів
+
+    const contactBook = {
+      contacts: [
+        { name: 'a', number: '69869', email: 'a@mail.com' },
+        { name: 'b', number: '9876', email: 'b@mail.com' },
+        { name: 'c', number: '4567', email: 'c@mail.com' },
+      ],
+      getName: function (curName) {
+        const result = this.contacts.filter((content) => content.name === curName);
+        return result[0];
+      },
+      addContact: function (name = '', number = '', email = '') {
+        const newContact = { name, number, email };
+        this.contacts.push(newContact);
+        return this.contacts;
+      }
+    }
+
+    console.log(contactBook.addContact('d', '4563', 'd@mail.com'))
+    console.log(contactBook.getName('d'))
+
+
+    // ДЗ 34. Картка користувача
+
+    const userProfile = {
+      name: 'Li',
+      age: 30,
+      residense: 'China',
+      getUserProfile: function () {
+        return `User name is ${this.name}, user is ${this.age} yers old and User currently livs in ${this.residense}.`
+      }
+    }
+
+    console.log(userProfile.getUserProfile())
+  </script>
+</body>
+
+</html>

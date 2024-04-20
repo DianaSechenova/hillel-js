@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lesson 11</title>
+</head>
+<style>
+  .slider {
+    width: 1000px;
+    height: 600px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .slider img {
+    height: 100%;
+    width: 100%;
+    transition: opacity 1s ease-in-out;
+    opacity: 0;
+  }
+
+  .slider img.loaded {
+    opacity: 1;
+  }
+</style>
+
+<body>
+  <div class="slider"></div>
+
+  <script>
+    // ДЗ 30. Отримання випадкового зображення
+    const box = document.querySelector('.slider');
+    let img = document.createElement('img');
+    const max = 10;
+
+    function randomImage() {
+      const urlName = Math.floor(Math.random() * (max - 1) + 1)
+
+      img.src = `images/${urlName}.jpg`;
+
+      img.onload = function () {
+        img.classList.add('loaded');
+      }
+
+      if (box.firstChild) {
+        box.removeChild(box.firstChild);
+      }
+
+      box.appendChild(img)
+    }
+
+    setInterval(randomImage, 2000);
+
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lesson 11</title>
+  <style>
+    #pTable {
+      margin: 50px;
+      border-collapse: collapse;
+    }
+
+    #pTable tr td {
+      border: 1px solid #000;
+      padding: 20px;
+    }
+
+    #pTable tr:first-child {
+      background-color: antiquewhite;
+    }
+
+    #pTable tr td:first-child {
+      background-color: antiquewhite;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- ДЗ 28. Таблиця піфагора -->
+
+  <table id="pTable"></table>
+
+  <script>
+    const table = document.querySelector('#pTable');
+    (function createTable() {
+      const row = 10;
+      const column = 10;
+
+      for (let i = 1; i <= row; i++) {
+        let tr = document.createElement('tr');
+
+        for (let j = 1; j <= column; j++) {
+          let td = document.createElement('td');
+          td.textContent = i * j;
+          tr.appendChild(td);
+        }
+
+        table.appendChild(tr);
+      }
+    })();
+  </script>
+</body>
+
+</html>

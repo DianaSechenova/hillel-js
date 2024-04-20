@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lesson 11</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lugrasimo&display=swap" rel="stylesheet">
+  <style>
+    html {
+      font-family: "Lugrasimo", cursive;
+      font-weight: 400;
+      font-style: normal;
+      font-size: 14px;
+    }
+
+    body {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 100%;
+    }
+
+    body div {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .btn {
+      display: block;
+      color: #fff;
+      border: 1.5px solid #00aae7;
+      background-color: #00aae7;
+      font-family: 'Lugrasimo', serif;
+      font-size: 22px;
+      padding: 20px 38px;
+      border-radius: 9px;
+      cursor: pointer
+    }
+
+    .btn:hover {
+      border: 1.5px solid #0168BC;
+      background-color: #0168BC;
+    }
+
+    .p {
+      font-family: 'Lugrasimo', serif;
+      font-size: 22px;
+      font-weight: bold;
+      color: #0168BC;
+    }
+
+    .p.toggle-color {
+      color: #00aae7 !important;
+      text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+    }
+  </style>
+</head>
+
+<body>
+  <div>
+    <button class="btn">Toogle</button>
+    <p class="p">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sunt, debitis</p>
+  </div>
+
+  <script>
+    //ДЗ 29. Кнопка зміни кольору
+
+    const btn = document.querySelector('.btn');
+    const text = document.querySelector('.p');
+  
+    btn.addEventListener("click", function () {
+      console.log(text)
+      text.classList.toggle('toggle-color');
+    });
+  </script>
+</body>
+
+</html>

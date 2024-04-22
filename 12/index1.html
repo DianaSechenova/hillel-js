@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lesson 12</title>
+  <style>
+    body {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 100%;
+    }
+
+    div {
+      margin: 0 auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .btn {
+      display: block;
+      color: #fff;
+      border: 1.5px solid #00aae7;
+      background-color: #00aae7;
+      font-family: 'Lugrasimo', serif;
+      font-size: 22px;
+      padding: 20px 38px;
+      border-radius: 9px;
+      cursor: pointer
+    }
+  </style>
+</head>
+
+<body>
+  <!-- ДЗ 18. Переход на сторінку -->
+  <div>
+    <button id="btn" class="btn">Clicl</button>
+    <button id="navigate" class="btn">Navigate</button>
+  </div>
+
+  <script>
+    const btn = document.getElementById('btn');
+    const navigate = document.getElementById('navigate');
+    let getUrl = '';
+
+    (
+      function () {
+        btn.addEventListener('click', () => {
+          getUrl = prompt('Enter URL:');
+        })
+        navigate.addEventListener('click', () => {
+          if (getUrl) {
+            window.location.href = getUrl;
+          } else {
+            alert('Enter URL:');
+          }
+        })
+      }
+    )()
+  </script>
+</body>
+
+</html>

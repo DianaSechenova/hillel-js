@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>lesson 12</title>
+  <style>
+    body {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 100%;
+      text-align: center;
+    }
+
+    div {
+      margin: 0 auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .btn {
+      display: block;
+      color: #fff;
+      border: 1.5px solid #00aae7;
+      background-color: #00aae7;
+      font-family: 'Lugrasimo', serif;
+      font-size: 22px;
+      padding: 20px 38px;
+      border-radius: 9px;
+      cursor: pointer
+    }
+  </style>
+</head>
+
+<body>
+  <!-- ДЗ 19. Використання подій -->
+
+  <div id="parent">
+    <button class="btn">button 1</button>
+    <button class="btn">button 2</button>
+    <button class="btn">button 3</button>
+  </div>
+  <p id="text"></p>
+
+  <script>
+    const parent = document.getElementById('parent');
+    const text = document.getElementById('text');
+
+    (
+      function () {
+        parent.addEventListener('click', (e) => {
+          if (event.target.nodeName.toLowerCase() === 'button') {
+            text.textContent = `Клiкнуто на кнопцi: ${event.target.textContent}`
+          }
+        })
+      }
+    )()
+  </script>
+</body>
+
+</html>

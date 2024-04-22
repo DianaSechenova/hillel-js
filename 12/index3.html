@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lesson 12</title>
+  <style>
+    .todo-list {
+      min-height: 100px;
+    }
+
+    button {
+      padding: 4px 10px;
+      margin: 0 10px;
+    }
+
+    .todo-list-wrapp {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    ul {
+      padding: 0 0 0 10px;
+    }
+
+    ul li {
+      margin: 10px 0;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- З 20. TODO лист -->
+
+  <div class="todo-list-wrapp">
+    <div class="todo-list">
+      <h2>TO DO LIST</h2>
+      <ul id="list"></ul>
+    </div>
+
+    <div class="actions">
+      <input id="enterInput" type="text" placeholder="enter issue">
+      <button id="addBtn">add</button>
+    </div>
+  </div>
+</body>
+
+<script>
+  const input = document.getElementById('enterInput');
+  const addBtn = document.getElementById('addBtn');
+  let ul = document.getElementById('list');
+  let li;
+  let deleteBtn;
+
+  addBtn.addEventListener('click', addIssue)
+
+  function addIssue() {
+    if (input.value) {
+      li = document.createElement('li');
+      li.textContent = input.value;
+      deleteBtn = document.createElement('button');
+      deleteBtn.textContent = 'Delete';
+
+      li.appendChild(deleteBtn);
+      ul.appendChild(li);
+    }
+    input.value = '';
+  }
+
+  function deleteIssue() {
+    ul.addEventListener('click', function (e) {
+      if (event.target.nodeName.toLowerCase() === 'button') {
+        e.target.parentNode.remove();
+      }
+    })
+  }
+
+  deleteIssue()
+</script>
+
+</html>

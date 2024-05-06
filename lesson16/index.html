@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lesson 16</title>
+</head>
+
+<body>
+  <script>
+    class Student {
+      constructor(first, last, birth, grades) {
+        this.firstName = first;
+        this.lastName = last;
+        this.birthYear = birth;
+        this.grades = grades;
+        this.attendance = [...Array(25)].fill(null)
+        this.index = 0;
+      }
+
+      introduce() {
+        console.log(`Bік студента ${this.firstName} ${this.lastName}: ${this.getAge()}, середній бал студента: ${this.getAverageScore()}`);
+      };
+
+      getAverageAttendance() {
+        const presentDays = this.attendance.filter(day => day !== null);
+        const total = presentDays.length;
+        const sumPresent = presentDays.filter(day => day === true).length;
+        const averagePresent = sumPresent / total;
+        return averagePresent;
+      };
+
+      getAverageScore() {
+        const total = this.grades.length;
+        const sumGrades = this.grades.reduce((sum, grade) => sum + grade, 0);
+        const averageScore = sumGrades / total;
+        return averageScore;
+      };
+
+      getAge() {
+        const currentYer = new Date().getFullYear();
+        const year = currentYer - this.birthYear;
+        return year;
+      };
+
+      present() {
+        if (this.index <= 25 && this.attendance[this.index] === null) {
+          this.attendance[this.index] = true;
+          this.index++;
+        } else {
+          console.log('Error: Cannot mark present.');
+        }
+      };
+
+      absent() {
+        if (this.index <= 25 && this.attendance[this.index] === null) {
+          this.attendance[this.index] = false;
+          this.index++;
+        } else {
+          console.log('Error: Cannot mark absent.');
+        }
+      };
+
+      summary() {
+        if (this.getAverageScore() >= 90 && this.getAverageAttendance() >= 0.9) {
+          console.log('Молодець!')
+        } else if (this.getAverageScore() < 90 || this.getAverageAttendance() < 0.9) {
+          console.log('Добре, але можна краще')
+        } else {
+          console.log('Редиска!');
+        }
+      };
+    }
+
+    const studentA = ["Otto", 'Ottotovich', 1993, [60, 100, 80, 100, 100, 100, 100, 60, 50, 20]]
+    const otto = new Student(...studentA);
+
+    otto.introduce();
+    otto.present()
+    otto.present()
+    otto.present()
+    otto.present()
+    otto.absent()
+    otto.absent()
+    otto.present()
+    otto.absent()
+    otto.summary()
+
+    const studentB = ["Romo", 'Romonovich', 2000, [100, 100, 10, 100, 100, 100, 100, 100, 100, 100]]
+    const romo = new Student(...studentB);
+    romo.introduce();
+    romo.present()
+    romo.present()
+    romo.present()
+    romo.present()
+    romo.present()
+    romo.present()
+    romo.present()
+    romo.present()
+    romo.present()
+    romo.present()
+    romo.present()
+    romo.present()
+    romo.present()
+    romo.present()
+    romo.present()
+    romo.present()
+    romo.present()
+    romo.present()
+    romo.present()
+    romo.present()
+    romo.present()
+    romo.present()
+    romo.present()
+    romo.present()
+    romo.absent()
+    romo.summary()
+
+    const studentC = ["Alo", 'Alolovich', 1993, [60, 10, 80, 10, 20, 0, 10, 60, 50, 20]]
+    const alo = new Student(...studentC);
+    alo.introduce();
+    alo.present()
+    alo.present()
+    alo.present()
+    alo.present()
+    alo.absent()
+    alo.absent()
+    alo.absent()
+    alo.absent()
+    alo.absent()
+    alo.absent()
+    alo.absent()
+    alo.absent()
+    alo.summary()
+  </script>
+</body>
+
+</html>

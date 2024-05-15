@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Таймер відліку</title>
+
+  <style>
+    .wrapp {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrapp">
+    <h2>Таймер відліку</h2>
+    <div id="clock"></div>
+  </div>
+
+
+  <script>
+    class CountdownTimer {
+      #intervalId;
+      element = document.getElementById('clock');
+
+      constructor(timeStart) {
+        this.timeStart = timeStart;
+        const [min, sec] = this.timeStart.split(':').map(Number);
+        this.element.textContent = `${min.toString().padStart(2, '0')}:${sec.toString().padStart(2, '0')}`;
+
+        this.start();
+      }
+
+      updateClock = () => {
+        let [min, sec] = this.timeStart.split(':').map(Number);
+
+        if (min >= 0 || sec >= 0) {
+          if (sec === 0) {
+            if (min === 0) {
+              this.stop();
+              return;
+            } else {
+              sec = 59;
+              min--;
+            }
+          } else {
+            sec--;
+          }
+
+          this.timeStart = `${min.toString().padStart(2, '0')}:${sec.toString().padStart(2, '0')}`;
+          this.element.textContent = this.timeStart;
+        }
+      }
+
+      start() {
+        this.#intervalId = setInterval(this.updateClock, 1000);
+      }
+
+      stop() {
+        clearInterval(this.#intervalId);
+      }
+    }
+
+    const newCountdownTimer = new CountdownTimer('01:03');
+  </script>
+</body>
+
+</html>

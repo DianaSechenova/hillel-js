@@ -1,0 +1,37 @@
+.weather-widget-wrapp {
+  margin: 0 auto;
+  display: block;
+  width: 600px;
+  height: auto;
+  position: relative;
+}
+.weather-widget {
+  background: rgb(23,16,139);
+  border-radius: 6px;
+  padding: 16px;
+  color: white;
+
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+h2 {
+  padding: 0;
+  margin: 0;
+}
+.upload {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 30px;
+  height: 30px;
+  display: block;
+  cursor: pointer;
+}
+.js__upload {
+  display: none;
+}
+.temp {
+  font-size: 34px;
+  font-weight: bold;
+}

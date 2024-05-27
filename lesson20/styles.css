@@ -1,7 +1,9 @@
 li.list-group-item:hover {
   background-color: rgba(128, 128, 128, 0.5);
-  cursor: pointer;
 }
 .todo-item--checked {
   text-decoration: line-through;
+}
+.toDoItemValue {
+  cursor: pointer;
 }

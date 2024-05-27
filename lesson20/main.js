@@ -54,11 +54,12 @@ $(document).ready(function () {
       .attr("data-bs-toggle", "modal")
       .attr("data-bs-target", "#exampleModal")
       .on("click", function () {
-        $(".modal-body").text(`${item.todoValue} : ${item.descriptionValue}`);
+        $(".modal-body").text(item.descriptionValue);
+        $(".modal-title").text(item.todoValue);
       });
 
     let $deleteBtn = $("<button></button>")
-      .text("Видалити")
+      .text("Delete")
       .addClass("btn btn-secondary ms-auto")
       .on("click", function (event) {
         event.stopPropagation();

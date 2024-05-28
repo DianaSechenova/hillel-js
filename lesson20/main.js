@@ -1,64 +1,56 @@
 $(document).ready(function () {
   const $form = $("#js--form");
   const $list = $(".js--todos-wrapper");
-  initTodos();
-
-  $form.on("submit", function (event) {
-    event.preventDefault();
-    addTodoItem($("#todoInput").val(), $("#description").val());
-  });
 
   function initTodos() {
-    let todos = JSON.parse(localStorage.getItem("todos"));
-    if (todos && todos.length > 0) {
-      todos.forEach((item) => {
-        createListElement(item);
-      });
-    }
+    const todos = JSON.parse(localStorage.getItem("todos")) || [];
+    todos.forEach(function (item) {
+      createListElement(item);
+    });
   }
 
   function addTodoItem(todoValue, descriptionValue) {
     $form[0].reset();
-    let todos = JSON.parse(localStorage.getItem("todos")) || [];
-    let newItem = {
+    const todos = JSON.parse(localStorage.getItem("todos")) || [];
+    const newItem = {
       id: Date.now(),
       todoValue: todoValue,
       descriptionValue: descriptionValue,
       checked: false,
     };
     todos.push(newItem);
-
     localStorage.setItem("todos", JSON.stringify(todos));
     createListElement(newItem);
   }
 
   function createListElement(item) {
-    let $listItem = $("<li></li>")
-      .addClass("list-group-item d-flex align-items-center")
-      .attr("data-id", item.id);
+    const { id, todoValue, descriptionValue, checked } = item;
 
-    let $checkbox = $("<input>")
+    const $listItem = $("<li></li>")
+      .addClass("list-group-item d-flex align-items-center")
+      .attr("data-id", id);
+
+    const $checkbox = $("<input>")
       .attr("type", "checkbox")
-      .attr("name", "checked")
-      .prop("checked", item.checked)
+      .prop("checked", checked)
       .on("click", function (event) {
         event.stopPropagation();
-        item.checked = this.checked;
+        item.checked = $checkbox.prop("checked");
         updateLocalStorage(item);
-        toggleCheckedClass($listItem, this.checked);
+        toggleCheckedClass($listItem, item.checked);
       });
 
-    let $value = $("<span></span>")
-      .text(item.todoValue)
+    const $value = $("<span></span>")
+      .text(todoValue)
       .addClass("toDoItemValue ms-2 w-100 h-100")
       .attr("data-bs-toggle", "modal")
       .attr("data-bs-target", "#exampleModal")
       .on("click", function () {
-        $(".modal-body").text(item.descriptionValue);
-        $(".modal-title").text(item.todoValue);
+        $(".modal-body").text(descriptionValue);
+        $(".modal-title").text(todoValue);
       });
 
-    let $deleteBtn = $("<button></button>")
+    const $deleteBtn = $("<button></button>")
       .text("Delete")
       .addClass("btn btn-secondary ms-auto")
       .on("click", function (event) {
@@ -68,32 +60,35 @@ $(document).ready(function () {
 
     $listItem.append($checkbox, $value, $deleteBtn);
     $list.append($listItem);
-
-    toggleCheckedClass($listItem, item.checked);
+    toggleCheckedClass($listItem, checked);
   }
 
   function updateLocalStorage(item) {
-    let todos = JSON.parse(localStorage.getItem("todos")) || [];
-    let index = todos.findIndex((todo) => todo.id === item.id);
-    todos[index] = item;
-    localStorage.setItem("todos", JSON.stringify(todos));
+    const todos = JSON.parse(localStorage.getItem("todos")) || [];
+    const updatedTodos = todos.map(function (todo) {
+      return todo.id === item.id ? item : todo;
+    });
+    localStorage.setItem("todos", JSON.stringify(updatedTodos));
   }
 
   function toggleCheckedClass($item, isChecked) {
-    if (isChecked) {
-      $item.addClass("todo-item--checked");
-    } else {
-      $item.removeClass("todo-item--checked");
-    }
+    $item.toggleClass("todo-item--checked", isChecked);
   }
 
   function deleteIssue($item) {
+    const id = parseInt($item.attr("data-id"));
     $item.remove();
-    let todos = JSON.parse(localStorage.getItem("todos")) || [];
-    let index = todos.findIndex(
-      (todo) => todo.id === parseInt($item.attr("data-id"))
-    );
-    todos.splice(index, 1);
-    localStorage.setItem("todos", JSON.stringify(todos));
+    const todos = JSON.parse(localStorage.getItem("todos")) || [];
+    const updatedTodos = todos.filter(function (todo) {
+      return todo.id !== id;
+    });
+    localStorage.setItem("todos", JSON.stringify(updatedTodos));
   }
+
+  $form.on("submit", function (event) {
+    event.preventDefault();
+    addTodoItem($("#todoInput").val(), $("#description").val());
+  });
+
+  initTodos();
 });

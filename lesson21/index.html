@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="./styles.css">
+  <title>lesson 20</title>
+</head>
+
+<body>
+  <div class="container">
+    <h1>ToDoList</h1>
+    <form id="js--form">
+      <div class="mb-3">
+        <input type="text" name="value" class="form-control" id="todoInput" placeholder="Title">
+      </div>
+      <div class="mb-3">
+        <textarea class="form-control" id="description" rows="3" placeholder="Description"></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary">Add</button>
+    </form>
+    <ul class="list-group mt-4 js--todos-wrapper"></ul>
+  </div>
+
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Ваше завдання</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="./node_modules/jquery/dist/jquery.min.js"></script>
+  <script src="./node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="./dist/script.js"></script>
+</body>
+
+</html>

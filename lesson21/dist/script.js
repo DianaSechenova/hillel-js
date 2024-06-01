@@ -1,16 +1,16 @@
 "use strict";
 
 $(document).ready(function () {
-  const $form = $("#js--form");
-  const $list = $(".js--todos-wrapper");
+  var $form = $("#js--form");
+  var $list = $(".js--todos-wrapper");
   function initTodos() {
-    const todos = JSON.parse(localStorage.getItem("todos")) || [];
+    var todos = JSON.parse(localStorage.getItem("todos")) || [];
     todos.forEach(createListElement);
   }
   function addTodoItem(todoValue, descriptionValue) {
     $form[0].reset();
-    const todos = JSON.parse(localStorage.getItem("todos")) || [];
-    const newItem = {
+    var todos = JSON.parse(localStorage.getItem("todos")) || [];
+    var newItem = {
       id: Date.now(),
       todoValue: todoValue,
       descriptionValue: descriptionValue,
@@ -21,24 +21,22 @@ $(document).ready(function () {
     createListElement(newItem);
   }
   function createListElement(item) {
-    const {
-      id,
-      todoValue,
-      descriptionValue,
-      checked
-    } = item;
-    const $listItem = $("<li></li>").addClass("list-group-item d-flex align-items-center").attr("data-id", id);
-    const $checkbox = $("<input>").attr("type", "checkbox").prop("checked", checked).on("click", event => {
+    var id = item.id,
+      todoValue = item.todoValue,
+      descriptionValue = item.descriptionValue,
+      checked = item.checked;
+    var $listItem = $("<li></li>").addClass("list-group-item d-flex align-items-center").attr("data-id", id);
+    var $checkbox = $("<input>").attr("type", "checkbox").prop("checked", checked).on("click", function (event) {
       event.stopPropagation();
       item.checked = $checkbox.prop("checked");
       updateLocalStorage(item);
       toggleCheckedClass($listItem, item.checked);
     });
-    const $value = $("<span></span>").text(todoValue).addClass("toDoItemValue ms-2 w-100 h-100").attr("data-bs-toggle", "modal").attr("data-bs-target", "#exampleModal").on("click", () => {
+    var $value = $("<span></span>").text(todoValue).addClass("toDoItemValue ms-2 w-100 h-100").attr("data-bs-toggle", "modal").attr("data-bs-target", "#exampleModal").on("click", function () {
       $(".modal-body").text(descriptionValue);
       $(".modal-title").text(todoValue);
     });
-    const $deleteBtn = $("<button></button>").text("Delete").addClass("btn btn-secondary ms-auto").on("click", event => {
+    var $deleteBtn = $("<button></button>").text("Delete").addClass("btn btn-secondary ms-auto").on("click", function (event) {
       event.stopPropagation();
       deleteIssue($listItem);
     });
@@ -47,8 +45,8 @@ $(document).ready(function () {
     toggleCheckedClass($listItem, checked);
   }
   function updateLocalStorage(item) {
-    const todos = JSON.parse(localStorage.getItem("todos")) || [];
-    const updatedTodos = todos.map(todo => {
+    var todos = JSON.parse(localStorage.getItem("todos")) || [];
+    var updatedTodos = todos.map(function (todo) {
       return todo.id === item.id ? item : todo;
     });
     localStorage.setItem("todos", JSON.stringify(updatedTodos));
@@ -57,15 +55,15 @@ $(document).ready(function () {
     $item.toggleClass("todo-item--checked", isChecked);
   }
   function deleteIssue($item) {
-    const id = parseInt($item.attr("data-id"));
+    var id = parseInt($item.attr("data-id"));
     $item.remove();
-    const todos = JSON.parse(localStorage.getItem("todos")) || [];
-    const updatedTodos = todos.filter(todo => {
+    var todos = JSON.parse(localStorage.getItem("todos")) || [];
+    var updatedTodos = todos.filter(function (todo) {
       return todo.id !== id;
     });
     localStorage.setItem("todos", JSON.stringify(updatedTodos));
   }
-  $form.on("submit", event => {
+  $form.on("submit", function (event) {
     event.preventDefault();
     addTodoItem($("#todoInput").val(), $("#description").val());
   });

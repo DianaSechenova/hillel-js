@@ -1,0 +1,104 @@
+$accent: #eceff1;
+$progress: #33a5ff;
+$progress2: #4dcb52;
+$profileImgSize: 48;
+$slidSize: 300;
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+	overflow: hidden;
+	font-family: "Montserrat", sans-serif;
+	font-weight: 400;
+	color: darken($accent,40%);
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+.visible {
+  height: #{$slidSize + "px"};
+  width: #{$slidSize + "px"};
+	background: $accent;
+	border-radius: 15px;
+  margin: 100px auto;
+  overflow: hidden;
+  position: relative;
+
+  .slider {
+    position: absolute;
+    left: 0;
+    top: 0;
+    list-style: none;
+    height: #{$slidSize + "px"};
+  
+    &__item {
+      float: left;
+      height: #{$slidSize + "px"};
+      width: #{$slidSize + "px"};
+      padding: 16px;
+      display: flex;
+			flex-direction: column;
+
+      &__body {
+        flex-grow: 1;
+				margin: 0;
+				quotes: "“" "”" "‘" "’";
+				&:before, &:after {
+					display: inline-block;
+					position: relative;
+					transform: scale(1.25);
+				}
+				&:before { content: open-quote; left: -1px; }
+				&:after { content: close-quote; right: -1px; }
+      }
+      &__footer {
+        img, span, small {
+					float: left;
+					white-space: inherit;
+				}
+				img {
+					margin-right: .75rem;
+					width: #{$profileImgSize + "px"};
+					height: #{$profileImgSize + "px"};
+					border-radius: 50%;
+					box-shadow: 0 7px 10px -2px rgba(darken($accent,50%),0.55);
+					transition: all 0.1s ease-in-out;
+				}
+        span {
+					vertical-align: top;
+					font-weight: 500;
+					color: darken($accent,50%);
+				}
+        small {
+					font-weight: 300;
+					color: darken($accent,30%);
+					&[data-social] {
+						&:before {
+							display: inline-block;
+							margin-right: 10px;
+							font-family: "Font Awesome 5 Brands";
+							font-size: inherit;
+							transform: scale(1.1);
+						}
+						&[data-social="facebook"]:before {
+							content: '\f082';
+							color: #3b5998;
+						}
+						&[data-social="twitter"]:before {
+							content: '\f099';
+							color: #1da1f2;
+						}
+						&[data-social="google"]:before {
+							content: '\f0d5';
+							color: #ea4335;
+						}
+          }}
+      }
+    }
+  }
+}
+
+
+

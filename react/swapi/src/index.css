@@ -1,0 +1,6 @@
+@import "bootstrap/dist/css/bootstrap.css";
+
+.pre-inner {
+ gap: 1rem;
+ font-size: 12px;
+}

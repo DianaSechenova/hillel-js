@@ -1,3 +1,6 @@
+const Api = require("./api");
+const api = new Api();
+
 document.addEventListener("DOMContentLoaded", () => {
   new TodoList();
 });
@@ -22,16 +25,17 @@ class TodoList {
 
   async addTodoItem(todoValue) {
     try {
-      const response = await fetch("/todos", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          title: todoValue,
-          checked: false,
-        }),
-      });
+      // const response = await fetch("/todos", {
+      //   method: "POST",
+      //   headers: {
+      //     "Content-Type": "application/json",
+      //   },
+      //   body: JSON.stringify({
+      //     title: todoValue,
+      //     checked: false,
+      //   }),
+      // });
+      const response = api.postResponse(todoValue);
       const newItem = await response.json();
 
       this.createListElement(newItem);

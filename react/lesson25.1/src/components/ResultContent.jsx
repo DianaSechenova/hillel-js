@@ -22,22 +22,22 @@ class ResultContent extends Component {
 
     return (
       <div className='mt-4'>
-        <p>Переможець:</p>
-        {maxEmoji && <img className="icon" src={images[maxEmoji]} alt={maxEmoji} />}
-        <p>Кiльлiсть голосiв: {maxCount}</p>
-      </div>
+      <p>Переможець:</p>
+      {maxCount > 0 ? (
+        <div>
+          <img className="icon" src={images[maxEmoji]} alt={maxEmoji} />
+          <p>Кiлькiсть голосiв: {maxCount}</p>
+        </div>
+      ) : (
+        <p>Немає голосiв</p>
+      )}
+    </div>
     );
   }
 }
 
 ResultContent.propTypes = {
-  clickCounts: PropTypes.shape({
-    devil: PropTypes.number.isRequired,
-    emoji: PropTypes.number.isRequired,
-    happiness: PropTypes.number.isRequired,
-    happySun: PropTypes.number.isRequired,
-    smile: PropTypes.number.isRequired
-  }).isRequired
+  clickCounts: PropTypes.object.isRequired
 };
 
 export default ResultContent;

@@ -21,6 +21,12 @@ class Emoji extends Component {
     this.counter = this.counter.bind(this);
   }
 
+  componentDidUpdate(prevProps) {
+    if (prevProps.clickCounts !== this.props.clickCounts) {
+      this.setState({ counts: this.props.clickCounts });
+    }
+  }
+
   counter(key) {
     this.setState((prevState) => {
       const newCounts = {
@@ -62,7 +68,8 @@ class Emoji extends Component {
 }
 
 Emoji.propTypes = {
-  onEmojiClick: PropTypes.func.isRequired
+  onEmojiClick: PropTypes.func.isRequired,
+  clickCounts: PropTypes.object.isRequired,
 };
 
 export default Emoji;

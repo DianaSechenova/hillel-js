@@ -31,7 +31,7 @@ class App extends Component {
 
   handleClearResult() {
     localStorage.clear();
-      this.setState({
+    this.setState({
       clickCounts: {
         devil: 0,
         emoji: 0,
@@ -51,7 +51,7 @@ class App extends Component {
     return (
       <div className='container d-flex flex-column align-items-center'>
         <Head />
-        <Emoji onEmojiClick={this.handleEmojiClick} />
+        <Emoji clickCounts={this.state.clickCounts} onEmojiClick={this.handleEmojiClick} />
         <div className="d-flex gap-2">
           <ButtonResult onButtonClick={this.handleToggleResult} />
           <ClearResults handleClearResult={this.handleClearResult} />
@@ -63,4 +63,3 @@ class App extends Component {
 }
 
 export default App;
-

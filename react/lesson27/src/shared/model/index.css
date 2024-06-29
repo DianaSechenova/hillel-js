@@ -1,0 +1,99 @@
+/* * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.main {
+    padding: 10px;
+}
+.header,
+.footer {
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+.content {
+    height: 100vh;
+}
+.logo {
+    padding-right: 30px;
+}
+.header {
+    border-bottom: 1px solid orange;
+}
+.header__logo {
+    display: flex;
+    list-style: none;
+}
+.header__logo li {
+    padding: 10px;
+}
+.footer {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    border-top: 1px solid orange;
+}
+ */
+ body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.content {
+    height: 100vh;
+}
+
+header {
+    background-color: #607d8b6e;
+    color: white;
+    padding: 1em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header h1 {
+    margin: 0;
+}
+
+main {
+    width: 80vw;
+    margin: 0 auto;
+    padding-top: 4rem;
+}
+
+.nav {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    
+}
+
+.nav li {
+    margin-right: 1em;
+}
+
+.nav li a {
+    color: white;
+    text-decoration: none;
+}
+
+.nav li a:hover {
+    text-decoration: underline;
+}
+
+#theme-toggle {
+    padding: 0.5em;
+    background-color: #444;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+#theme-toggle:hover {
+    background-color: #555;
+}

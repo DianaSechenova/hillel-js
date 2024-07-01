@@ -7,7 +7,7 @@ const validationSchema = Yup.object({
 });
 
 // eslint-disable-next-line react/prop-types
-export default function ToDoForm({ handleSubmit }) {
+export default function ToDoForm({handleSubmit}) {
   const formik = useFormik({
     initialValues: {
       text: '',
@@ -18,9 +18,10 @@ export default function ToDoForm({ handleSubmit }) {
       resetForm();
     },
   });
+  
 
   return (
-    <form onSubmit={formik.handleSubmit}>
+    <form onSubmit={formik.handleSubmit} >
       <Stack
         direction="column"
         justifyContent="center"

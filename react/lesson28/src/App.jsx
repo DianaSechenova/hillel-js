@@ -16,9 +16,15 @@ function App() {
   };
 
   const saveToLocalStorage = (value) => {
-    const id = Math.floor(Math.random() * 100);
+    const id = Date.now();
     const existingItems = JSON.parse(localStorage.getItem('todos')) || [];
     const updatedItems = [...existingItems, { id, value }];
+    localStorage.setItem('todos', JSON.stringify(updatedItems));
+    setItems(updatedItems);
+  };
+
+  const removeItem = (id) => {
+    const updatedItems = items.filter(item => item.id !== id);
     localStorage.setItem('todos', JSON.stringify(updatedItems));
     setItems(updatedItems);
   };
@@ -27,7 +33,7 @@ function App() {
     <div>
       <Container maxWidth="sm">
         <ToDoForm handleSubmit={handleSubmit} />
-        <ToDoList items={items} setItems={setItems} />
+        <ToDoList items={items} setItems={setItems} removeItem={removeItem}/>
       </Container>
     </div>
   );

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/redux/4.1.1/redux.min.js"></script>
+  <title>Document</title>
+</head>
+
+<body>
+  <div class="conteiner">
+    <span style="display: block;">Value: <span id="value">0</span></span>
+    <button id="inc">+</button>
+    <button id="dec">-</button>
+  </div>
+
+  <script>
+    const TYPES = {
+      inc: "INCRENENT",
+      dec: "DECREMENT"
+    }
+    function counterReduser(state = 0, action) {
+      switch (action.type) {
+        case TYPES.inc:
+          return state + 1;
+        case TYPES.dec:
+          return state > 0 ? state - 1 : 0;
+        default:
+          return state;
+      }
+    }
+
+    const valueEl = document.getElementById('value')
+    const store = Redux.createStore(counterReduser);
+    store.subscribe(() => {
+      valueEl.innerHTML = store.getState().toString();
+    })
+    const incEl = document.getElementById('inc').addEventListener('click', () => {
+      store.dispatch({ type: TYPES.inc })
+    })
+    const decEl = document.getElementById('dec').addEventListener('click', () => {
+      store.dispatch({ type: TYPES.dec })
+    })
+  </script>
+</body>
+
+</html>

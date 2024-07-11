@@ -1,3 +1,4 @@
 export default {
-  input: (state) => state.swapi.value,
+  data: (state) => state.swapi.value,
+  inputValue: (state) => state.form.inputValue,
 };

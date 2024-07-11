@@ -1,7 +1,21 @@
-function Form({ onSubmitForm, inputValue, setInputValue }) {
+import { useDispatch, useSelector } from 'react-redux';
+import { setValue, clearData, getSwapiData } from '../../core/slise/swapiSlice';
+import { setInputValue } from '../../core/slise/formSlice';
+
+
+function Form() {
+  const dispatch = useDispatch();
+  const inputValue = useSelector((state) => state.form.inputValue);
+
   const handleSubmit = (event) => {
     event.preventDefault();
-    onSubmitForm(inputValue);
+    dispatch(setValue(inputValue));
+    dispatch(getSwapiData(inputValue));
+    dispatch(clearData());
+  };
+
+  const handleChange = (e) => {
+    dispatch(setInputValue(e.target.value));
   };
 
   return (
@@ -12,7 +26,7 @@ function Form({ onSubmitForm, inputValue, setInputValue }) {
           type="text" 
           className="form-control" 
           value={inputValue}
-          onChange={(e) => setInputValue(e.target.value)}
+          onChange={handleChange}
           placeholder="people/1" 
           aria-describedby="basic-addon3"
         />

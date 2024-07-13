@@ -1,10 +1,13 @@
 import { configureStore } from '@reduxjs/toolkit';
-import swapiReducer from './slise/swapiSlice'; 
-import formReducer from './slise/formSlice'; 
+import swapiSlice from './slise/slice.js';
 
 export const store = configureStore({
   reducer: {
-    swapi: swapiReducer,
-    form: formReducer,
+    swapi: swapiSlice.reducer
+  },
+  middleware: (getDefaultMiddleware) => {
+    return [
+        ...getDefaultMiddleware()
+    ]
   }
 });

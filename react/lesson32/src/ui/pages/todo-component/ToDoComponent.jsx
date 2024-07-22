@@ -1,5 +1,3 @@
-import {Provider} from "react-redux";
-import {store} from "../../../core/store.js";
 import {Container} from "@mui/material";
 import ToDoForm from "./components/ToDoForm.jsx";
 import ToDoList from "./components/ToDoList.jsx";
@@ -9,7 +7,6 @@ import Box from "@mui/material/Box";
 
 export function ToDoComponent() {
     return (
-        <Provider store={store}>
             <Container maxWidth="sm">
                 <ToDoForm />
                 <ToDoList />
@@ -20,6 +17,5 @@ export function ToDoComponent() {
                     <ResetAll />
                 </Box>
             </Container>
-        </Provider>
     )
 }

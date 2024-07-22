@@ -9,12 +9,17 @@ import Footer from "./widgets/Footer.jsx";
 import NotFound from "./NotFound.jsx";
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
+import {store} from "../core/store.js";
+import {Provider} from "react-redux";
+
 
 function App() {
 
   return (
       <BrowserRouter>
         <ErrorBoundary>
+            <Provider store={store}>
+
             <Header/>
             <Box sx={{
               position: 'absolute',
@@ -41,6 +46,7 @@ function App() {
               </Container>
             </Box>
             <Footer />
+            </Provider>
         </ErrorBoundary>
       </BrowserRouter>
   )

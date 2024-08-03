@@ -1,7 +1,7 @@
 import { createAction } from '@reduxjs/toolkit';
 
-const destinationAsyncAction = Object.freeze({
-    getDestinationsAsync: createAction('GET_DESTINATIONS_ASYNC')
+const hotelsAsyncAction = Object.freeze({
+    getHotelsAsync: createAction('GET_HOTELS_ASYNC')
 })
 
-export default destinationAsyncAction;
+export default hotelsAsyncAction;

@@ -1,17 +1,21 @@
 import {call, put, delay} from 'redux-saga/effects';
-import destination from "../slice.js";
+import hotels from "../slice.js";
 import api from "../../../config/api.js";
+import {push} from "redux-first-history";
+import {route} from "../../../config/route.jsx";
 
-function* callGetHotelsWorker() {
+function* callGetHotelsWorker(action) {
+    const {payload} = action
     try {
-        yield put(destination.actions.setLoading(true));
-        const { data, status } = yield call(api.getDestination);
+        yield put(hotels.actions.setLoading(true));
+        const { data, status } = yield call(api.getHotels, payload);
 
         if (status === 200) {
             yield delay(2000);
-            yield put(destination.actions.setItems(data));
+            yield put(hotels.actions.setItems(data));
+            yield put(push(route.hotels.path));
         }
-        yield put(destination.actions.setLoading(false));
+        yield put(hotels.actions.setLoading(false));
     } catch (e) { console.warn(e) }
 }
 

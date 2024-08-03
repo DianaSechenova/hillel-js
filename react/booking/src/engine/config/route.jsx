@@ -1,6 +1,6 @@
 import Main from "../../ui/pages/Main.jsx";
 import About from "../../ui/pages/About.jsx";
-import Hotels from "../../ui/pages/Hotels.jsx";
+import Hotels from "../../ui/pages/Hotels";
 
 export const route = {
     main: {

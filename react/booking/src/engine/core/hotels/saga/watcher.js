@@ -1,7 +1,7 @@
 import {takeEvery} from 'redux-saga/effects'
-import destinationAsyncAction from "./asyncActions.js";
-import {callGetDestinationWorker} from "./worker.js";
+import {callGetHotelsWorker} from "./worker.js";
+import hotelsAsyncAction from "./asyncActions.js";
 
 export function* hotelsWatcher() {
-    yield takeEvery(hotelsAsyncAction.getHotelsAsync.type, callGetHotalsWorker)
+    yield takeEvery(hotelsAsyncAction.getHotelsAsync.type, callGetHotelsWorker)
 }

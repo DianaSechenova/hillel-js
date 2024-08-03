@@ -8,10 +8,10 @@ import {useDestination} from "./hooks/useDestination.js";
 import validate from "../../../engine/helpers/form.js";
 
 export default function AppForm() {
-    const {items, loading} = useDestination()
+    const {items, loading, handleSubmit} = useDestination()
     return (
         <Form
-            onSubmit={console.log}
+            onSubmit={handleSubmit}
             render={({handleSubmit}) => {
                 return (
                     <Box sx={{display: 'flex', gap: '30px'}} component="form" onSubmit={handleSubmit}>
@@ -57,6 +57,7 @@ export default function AppForm() {
                                     type="number"
                                     disabled={loading}
                                     validate={validate.required}
+                                    InputProps={{inputProps: {min: 0, max: 10}}}
                                 />
                             </Grid>
                             <Grid item xs={6} lg={1}>
@@ -67,6 +68,7 @@ export default function AppForm() {
                                     type="number"
                                     fullWidth
                                     disabled={loading}
+                                    InputProps={{inputProps: {min: 0, max: 10}}}
                                 />
                             </Grid>
                             <Grid item xs={12} lg={1}>
